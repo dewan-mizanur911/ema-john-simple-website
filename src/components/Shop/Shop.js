@@ -18,12 +18,14 @@ const Shop = () => {
         const newProduct = [];
         if (products.length) {
                  for (const key in getProduct) {
-                   // console.log(key);
-                    
                    const addedProduct = products.find(
                      (product) => product.key === key
-                   );
-                     newProduct.push(addedProduct);
+                     );
+                     if (addedProduct) {
+                         const quantity = getProduct[key];
+                         addedProduct.quantity = quantity;
+                         newProduct.push(addedProduct);
+                     }
                  }   
         }
         setCart(newProduct);
